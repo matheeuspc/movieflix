@@ -39,6 +39,7 @@ public class Role implements Serializable {
         this.authority = authority;
     }
 
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

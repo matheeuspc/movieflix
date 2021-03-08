@@ -2,7 +2,7 @@ package com.matheuspc.movieflix.entities;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.Objects;
+import java.util.*;
 
 @Entity
 @Table(name = "tb_genre")
@@ -14,6 +14,9 @@ public class Genre implements Serializable {
     private Long id;
 
     private String name;
+
+    @OneToMany(mappedBy = "genre")
+    private List<Movie> movies = new ArrayList<>();
 
     public Genre() {
     }
