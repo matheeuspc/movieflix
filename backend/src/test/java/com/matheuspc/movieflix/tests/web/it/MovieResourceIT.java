@@ -82,110 +82,110 @@ public class MovieResourceIT {
         result.andExpect(status().isUnauthorized());
     }
 
-//    @Test
-//    public void findByIdShouldReturnMovieAndReviewsWhenUserVisitorAuthenticated() throws Exception {
-//
-//        String accessToken = obtainAccessToken(visitorUsername, visitorPassword);
-//
-//        ResultActions result =
-//                mockMvc.perform(get("/movies/{id}", existingId)
-//                        .header("Authorization", "Bearer " + accessToken)
-//                        .contentType(MediaType.APPLICATION_JSON));
-//
-//        result.andExpect(status().isOk());
-//        result.andExpect(jsonPath("$.reviews").exists());
-//        Assertions.assertTrue(getReviews(result).length >= 0);
-//    }
-//
-//    @Test
-//    public void findByIdShouldReturnMovieAndReviewsWhenMemberAuthenticated() throws Exception {
-//
-//        String accessToken = obtainAccessToken(memberUsername, memberPassword);
-//
-//        ResultActions result =
-//                mockMvc.perform(get("/movies/{id}", existingId)
-//                        .header("Authorization", "Bearer " + accessToken)
-//                        .contentType(MediaType.APPLICATION_JSON));
-//
-//        result.andExpect(status().isOk());
-//        result.andExpect(jsonPath("$.reviews").exists());
-//        Assertions.assertTrue(getReviews(result).length >= 0);
-//    }
-//
-//    @Test
-//    public void findByIdShouldReturnNotFoundWhenIdDoesNotExist() throws Exception {
-//
-//        String accessToken = obtainAccessToken(visitorUsername, visitorPassword);
-//
-//        ResultActions result =
-//                mockMvc.perform(get("/movies/{id}", nonExistingId)
-//                        .header("Authorization", "Bearer " + accessToken)
-//                        .contentType(MediaType.APPLICATION_JSON));
-//
-//        result.andExpect(status().isNotFound());
-//    }
-//
-//    @Test
-//    public void findAllPagedShouldReturnUnauthorizedWhenNoTokenGiven() throws Exception {
-//
-//        ResultActions result =
-//                mockMvc.perform(get("/movies")
-//                        .contentType(MediaType.APPLICATION_JSON));
-//
-//        result.andExpect(status().isUnauthorized());
-//    }
-//
-//    @Test
-//    public void findAllPagedShouldReturnOrderedPageWhenVisitorAuthenticated() throws Exception {
-//
-//        String accessToken = obtainAccessToken(visitorUsername, visitorPassword);
-//
-//        long countMovies = movieRepository.count();
-//
-//        ResultActions result =
-//                mockMvc.perform(get("/movies")
-//                        .header("Authorization", "Bearer " + accessToken)
-//                        .contentType(MediaType.APPLICATION_JSON));
-//
-//        result.andExpect(status().isOk());
-//        result.andExpect(jsonPath("$.content").exists());
-//        result.andExpect(jsonPath("$.totalElements").value(countMovies));
-//        Assertions.assertTrue(orderedByTitle(getMovies(result)));
-//    }
-//
-//    @Test
-//    public void findAllPagedShouldReturnOrderedPageWhenMemberAuthenticated() throws Exception {
-//
-//        String accessToken = obtainAccessToken(memberUsername, memberPassword);
-//
-//        long countMovies = movieRepository.count();
-//
-//        ResultActions result =
-//                mockMvc.perform(get("/movies")
-//                        .header("Authorization", "Bearer " + accessToken)
-//                        .contentType(MediaType.APPLICATION_JSON));
-//
-//        result.andExpect(status().isOk());
-//        result.andExpect(jsonPath("$.content").exists());
-//        result.andExpect(jsonPath("$.totalElements").value(countMovies));
-//        Assertions.assertTrue(orderedByTitle(getMovies(result)));
-//    }
-//
-//    @Test
-//    public void findAllPagedShouldReturnFilteredMoviesWhenGenreIsInformed() throws Exception {
-//
-//        String accessToken = obtainAccessToken(visitorUsername, visitorPassword);
-//
-//        ResultActions result =
-//                mockMvc.perform(get("/movies?genreId=" + genreId)
-//                        .header("Authorization", "Bearer " + accessToken)
-//                        .contentType(MediaType.APPLICATION_JSON));
-//
-//        result.andExpect(status().isOk());
-//        result.andExpect(jsonPath("$.content").exists());
-//        Assertions.assertTrue(getMovies(result).length > 0);
-//        Assertions.assertTrue(allMoviesGenresMatch(getMovies(result), genreId));
-//    }
+    @Test
+    public void findByIdShouldReturnMovieAndReviewsWhenUserVisitorAuthenticated() throws Exception {
+
+        String accessToken = obtainAccessToken(visitorUsername, visitorPassword);
+
+        ResultActions result =
+                mockMvc.perform(get("/movies/{id}", existingId)
+                        .header("Authorization", "Bearer " + accessToken)
+                        .contentType(MediaType.APPLICATION_JSON));
+
+        result.andExpect(status().isOk());
+        result.andExpect(jsonPath("$.reviews").exists());
+        Assertions.assertTrue(getReviews(result).length >= 0);
+    }
+
+    @Test
+    public void findByIdShouldReturnMovieAndReviewsWhenMemberAuthenticated() throws Exception {
+
+        String accessToken = obtainAccessToken(memberUsername, memberPassword);
+
+        ResultActions result =
+                mockMvc.perform(get("/movies/{id}", existingId)
+                        .header("Authorization", "Bearer " + accessToken)
+                        .contentType(MediaType.APPLICATION_JSON));
+
+        result.andExpect(status().isOk());
+        result.andExpect(jsonPath("$.reviews").exists());
+        Assertions.assertTrue(getReviews(result).length >= 0);
+    }
+
+    @Test
+    public void findByIdShouldReturnNotFoundWhenIdDoesNotExist() throws Exception {
+
+        String accessToken = obtainAccessToken(visitorUsername, visitorPassword);
+
+        ResultActions result =
+                mockMvc.perform(get("/movies/{id}", nonExistingId)
+                        .header("Authorization", "Bearer " + accessToken)
+                        .contentType(MediaType.APPLICATION_JSON));
+
+        result.andExpect(status().isNotFound());
+    }
+
+    @Test
+    public void findAllPagedShouldReturnUnauthorizedWhenNoTokenGiven() throws Exception {
+
+        ResultActions result =
+                mockMvc.perform(get("/movies")
+                        .contentType(MediaType.APPLICATION_JSON));
+
+        result.andExpect(status().isUnauthorized());
+    }
+
+    @Test
+    public void findAllPagedShouldReturnOrderedPageWhenVisitorAuthenticated() throws Exception {
+
+        String accessToken = obtainAccessToken(visitorUsername, visitorPassword);
+
+        long countMovies = movieRepository.count();
+
+        ResultActions result =
+                mockMvc.perform(get("/movies")
+                        .header("Authorization", "Bearer " + accessToken)
+                        .contentType(MediaType.APPLICATION_JSON));
+
+        result.andExpect(status().isOk());
+        result.andExpect(jsonPath("$.content").exists());
+        result.andExpect(jsonPath("$.totalElements").value(countMovies));
+        Assertions.assertTrue(orderedByTitle(getMovies(result)));
+    }
+
+    @Test
+    public void findAllPagedShouldReturnOrderedPageWhenMemberAuthenticated() throws Exception {
+
+        String accessToken = obtainAccessToken(memberUsername, memberPassword);
+
+        long countMovies = movieRepository.count();
+
+        ResultActions result =
+                mockMvc.perform(get("/movies")
+                        .header("Authorization", "Bearer " + accessToken)
+                        .contentType(MediaType.APPLICATION_JSON));
+
+        result.andExpect(status().isOk());
+        result.andExpect(jsonPath("$.content").exists());
+        result.andExpect(jsonPath("$.totalElements").value(countMovies));
+        Assertions.assertTrue(orderedByTitle(getMovies(result)));
+    }
+
+    @Test
+    public void findAllPagedShouldReturnFilteredMoviesWhenGenreIsInformed() throws Exception {
+
+        String accessToken = obtainAccessToken(visitorUsername, visitorPassword);
+
+        ResultActions result =
+                mockMvc.perform(get("/movies?genreId=" + genreId)
+                        .header("Authorization", "Bearer " + accessToken)
+                        .contentType(MediaType.APPLICATION_JSON));
+
+        result.andExpect(status().isOk());
+        result.andExpect(jsonPath("$.content").exists());
+        Assertions.assertTrue(getMovies(result).length > 0);
+        Assertions.assertTrue(allMoviesGenresMatch(getMovies(result), genreId));
+    }
 
     private MovieDTO[] getMovies(ResultActions result) throws Exception {
         String json = result.andReturn().getResponse().getContentAsString();
@@ -208,14 +208,14 @@ public class MovieResourceIT {
         return true;
     }
 
-//    private boolean allMoviesGenresMatch(MovieDTO[] movies, long genreId) {
-//        for (MovieDTO movie : movies) {
-//            if (movie.getGenreId() != genreId) { // MovieDTO -> Long genreId
-//                return false;
-//            }
-//        }
-//        return true;
-//    }
+    private boolean allMoviesGenresMatch(MovieDTO[] movies, long genreId) {
+        for (MovieDTO movie : movies) {
+            if (movie.getGenreId() != genreId) { // MovieDTO -> Long genreId
+                return false;
+            }
+        }
+        return true;
+    }
 
     private String obtainAccessToken(String username, String password) throws Exception {
 

@@ -4,6 +4,7 @@ import com.matheuspc.movieflix.config.ResourceServerConfig;
 import com.matheuspc.movieflix.dto.MovieDTO;
 import com.matheuspc.movieflix.entities.Genre;
 import com.matheuspc.movieflix.entities.Movie;
+import com.matheuspc.movieflix.entities.Review;
 import com.matheuspc.movieflix.entities.User;
 import com.matheuspc.movieflix.repositories.GenreRepository;
 import com.matheuspc.movieflix.repositories.MovieRepository;
@@ -30,7 +31,7 @@ public class MovieService {
     public MovieDTO findById(Long id) {
         Optional<Movie> obj = movieRepository.findById(id);
         Movie entity = obj.orElseThrow(() -> new ResourceNotFoundException("Entity Not Found"));
-        return new MovieDTO(entity);
+        return new MovieDTO(entity, entity.getReviews());
     }
 
     @Transactional
@@ -42,6 +43,6 @@ public class MovieService {
         }
         Page<Movie> page = movieRepository.find(entity, pageRequest);
 
-        return page.map(x -> new MovieDTO(x));
+        return page.map(x -> new MovieDTO(x, x.getReviews()));
     }
 }

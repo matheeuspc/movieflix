@@ -8,9 +8,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import java.io.Serializable;
-import java.util.Objects;
 
-public class ReviewDTO implements Serializable {
+public class ReviewInsertDTO implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @Id
@@ -19,19 +18,22 @@ public class ReviewDTO implements Serializable {
 
     private String text;
 
-    private String user;
-    public ReviewDTO() {
-    }
+    private User user;
 
-    public ReviewDTO(Long id, String text) {
+    private Movie movie;
+
+    public ReviewInsertDTO(Long id, String text, User user, Movie movie) {
         this.id = id;
         this.text = text;
+        this.user = user;
+        this.movie = movie;
     }
 
-    public ReviewDTO(Review entity) {
+    public ReviewInsertDTO(Review entity) {
         id = entity.getId();
         text = entity.getText();
-        user = entity.getUser().getName();
+        user = entity.getUser();
+        movie = entity.getMovie();
     }
 
     public Long getId() {
@@ -50,24 +52,19 @@ public class ReviewDTO implements Serializable {
         this.text = text;
     }
 
-    public String getUser() {
+    public User getUser() {
         return user;
     }
 
-    public void setUser(String user) {
+    public void setUser(User user) {
         this.user = user;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        ReviewDTO reviewDTO = (ReviewDTO) o;
-        return id.equals(reviewDTO.id);
+    public Movie getMovie() {
+        return movie;
     }
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(id);
+    public void setMovie(Movie movie) {
+        this.movie = movie;
     }
 }
