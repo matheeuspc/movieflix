@@ -27,7 +27,7 @@ This project was developed as a lesson from bootcamp DevSuperior. The goal of th
   ### Payload to create and update a client
   ```json
   {
-    "text": "Filme muito bom! Nota 10!",
-    "movieId": 8
+    "text": "Great movie!",
+    "movieId": 5
 }
   ```
