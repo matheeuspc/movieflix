@@ -7,6 +7,7 @@ import com.matheuspc.movieflix.entities.User;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.validation.constraints.NotBlank;
 import java.io.Serializable;
 import java.util.Objects;
 
@@ -17,9 +18,13 @@ public class ReviewDTO implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @NotBlank(message = "Campo requerido")
     private String text;
 
-    private String user;
+    private UserReviewDTO user;
+
+    private Long movieId;
+
     public ReviewDTO() {
     }
 
@@ -31,7 +36,7 @@ public class ReviewDTO implements Serializable {
     public ReviewDTO(Review entity) {
         id = entity.getId();
         text = entity.getText();
-        user = entity.getUser().getName();
+        user = new UserReviewDTO(entity.getUser());
     }
 
     public Long getId() {
@@ -50,12 +55,29 @@ public class ReviewDTO implements Serializable {
         this.text = text;
     }
 
-    public String getUser() {
+//    public String getUser() {
+//        return user;
+//    }
+//
+//    public void setUser(String user) {
+//        this.user = user;
+//    }
+
+
+    public UserReviewDTO getUser() {
         return user;
     }
 
-    public void setUser(String user) {
+    public void setUser(UserReviewDTO user) {
         this.user = user;
+    }
+
+    public Long getMovieId() {
+        return movieId;
+    }
+
+    public void setMovieId(Long movieId) {
+        this.movieId = movieId;
     }
 
     @Override

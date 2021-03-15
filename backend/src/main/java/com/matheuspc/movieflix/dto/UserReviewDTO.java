@@ -1,6 +1,5 @@
 package com.matheuspc.movieflix.dto;
 
-import com.matheuspc.movieflix.entities.Role;
 import com.matheuspc.movieflix.entities.User;
 
 import javax.persistence.GeneratedValue;
@@ -11,7 +10,7 @@ import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
 
-public class UserDTO implements Serializable {
+public class UserReviewDTO implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @Id
@@ -20,22 +19,20 @@ public class UserDTO implements Serializable {
 
     private String name;
     private String email;
-    Set<RoleDTO> roles = new HashSet<>();
 
-    public UserDTO() {
+    public UserReviewDTO() {
     }
 
-    public UserDTO(Long id, String name, String email) {
+    public UserReviewDTO(Long id, String name, String email) {
         this.id = id;
         this.name = name;
         this.email = email;
     }
 
-    public UserDTO(User entity) {
+    public UserReviewDTO(User entity) {
         id = entity.getId();
         name = entity.getName();
         email = entity.getEmail();
-        entity.getRoles().forEach(role -> this.roles.add(new RoleDTO(role)));
     }
 
     public Long getId() {
@@ -62,15 +59,11 @@ public class UserDTO implements Serializable {
         this.email = email;
     }
 
-    public Set<RoleDTO> getRoles() {
-        return roles;
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        UserDTO userDTO = (UserDTO) o;
+        UserReviewDTO userDTO = (UserReviewDTO) o;
         return id.equals(userDTO.id);
     }
 

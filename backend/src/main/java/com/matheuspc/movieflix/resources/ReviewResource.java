@@ -1,7 +1,6 @@
 package com.matheuspc.movieflix.resources;
 
 import com.matheuspc.movieflix.dto.ReviewDTO;
-import com.matheuspc.movieflix.dto.ReviewInsertDTO;
 import com.matheuspc.movieflix.services.ReviewService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -22,7 +21,7 @@ public class ReviewResource {
     private ReviewService reviewService;
 
     @PostMapping
-    public ResponseEntity<ReviewInsertDTO> insert(@Valid @RequestBody ReviewInsertDTO dto){
+    public ResponseEntity<ReviewDTO> insert(@Valid @RequestBody ReviewDTO dto){
         dto = reviewService.insert(dto);
         URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}")
                 .buildAndExpand(dto.getId()).toUri();

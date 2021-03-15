@@ -1,39 +1,38 @@
 package com.matheuspc.movieflix.dto;
 
-import com.matheuspc.movieflix.entities.Movie;
 import com.matheuspc.movieflix.entities.Review;
-import com.matheuspc.movieflix.entities.User;
 
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.validation.constraints.NotBlank;
 import java.io.Serializable;
+import java.util.Objects;
 
-public class ReviewInsertDTO implements Serializable {
+public class ReviewMovieDTO implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @NotBlank(message = "Campo requerido")
     private String text;
 
-    private User user;
+    private UserReviewDTO user;
 
-    private Movie movie;
-
-    public ReviewInsertDTO(Long id, String text, User user, Movie movie) {
-        this.id = id;
-        this.text = text;
-        this.user = user;
-        this.movie = movie;
+    public ReviewMovieDTO() {
     }
 
-    public ReviewInsertDTO(Review entity) {
+    public ReviewMovieDTO(Long id, String text) {
+        this.id = id;
+        this.text = text;
+    }
+
+    public ReviewMovieDTO(Review entity) {
         id = entity.getId();
         text = entity.getText();
-        user = entity.getUser();
-        movie = entity.getMovie();
+        user = new UserReviewDTO(entity.getUser());
     }
 
     public Long getId() {
@@ -52,19 +51,24 @@ public class ReviewInsertDTO implements Serializable {
         this.text = text;
     }
 
-    public User getUser() {
+    public UserReviewDTO getUser() {
         return user;
     }
 
-    public void setUser(User user) {
+    public void setUser(UserReviewDTO user) {
         this.user = user;
     }
 
-    public Movie getMovie() {
-        return movie;
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        ReviewMovieDTO reviewDTO = (ReviewMovieDTO) o;
+        return id.equals(reviewDTO.id);
     }
 
-    public void setMovie(Movie movie) {
-        this.movie = movie;
+    @Override
+    public int hashCode() {
+        return Objects.hash(id);
     }
 }
