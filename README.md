@@ -28,7 +28,7 @@ This project was developed as a lesson from bootcamp DevSuperior. The goal of th
   [POST] /reviews
   ```
   
-  ### Payload to create and update a client
+  ### Payload to post a new review
   ```json
   {
     "text": "Great movie!",
