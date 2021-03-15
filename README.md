@@ -6,6 +6,9 @@ This project was developed as a lesson from bootcamp DevSuperior. The goal of th
 
 ## Conceptual Model
 ![](https://github.com/matheeuspc/projectImages/blob/main/conceptual_model_movieflix.png?raw=true)
+
+## Swagger documentation
+![Swagger](https://matheuspc-movieflix.herokuapp.com/swagger-ui.html#/review-resource)
 ## Endpoints Available
   * Login credentials
   ```java
