@@ -8,7 +8,7 @@ This project was developed as a lesson from bootcamp DevSuperior. The goal of th
 ![](https://github.com/matheeuspc/projectImages/blob/main/conceptual_model_movieflix.png?raw=true)
 
 ## Swagger 
-[API Documentation](https://matheuspc-movieflix.herokuapp.com/swagger-ui.html#/review-resource)
+[API Documentation](https://matheuspc-movieflix.herokuapp.com/swagger-ui.html)
 ## Endpoints Available
   * Login credentials
   ```java
