@@ -4,18 +4,36 @@ import AuthCard from '../Card';
 import './styles.scss';
 import { useState } from 'react';
 import ButtonIcon from 'core/components/ButtonIcon';
+import { makeLogin } from 'core/utils/request';
 
 type FormState = {
     username: string;
     password: string;
 }
 
+type LocationState = {
+    from: string;
+}
+
 const Login = () => {
     const { register, handleSubmit, formState: { errors } } = useForm<FormState>();
+    const [hasError, setHasError] = useState(false);
+    const history = useHistory();
+    const location = useLocation<LocationState>();
+
+    const { from } = location.state || { from: { pathname: "/catalog" } };
 
     const onSubmit = (data: FormState) => {
         console.log(data);
-        //chamar api de autenticação
+        makeLogin(data)
+            .then(response => {
+                setHasError(false);
+                // saveSessionData(response.data);
+                history.replace(from);
+            })
+            .catch(() => {
+                setHasError(true);
+            })
     }
 
     return (
