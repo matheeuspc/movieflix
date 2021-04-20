@@ -5,6 +5,7 @@ import { useParams } from 'react-router';
 import { useEffect, useState } from 'react';
 import { Movie, Review } from 'core/types/Movie';
 import { makePrivateRequest, makeRequest } from 'core/utils/request';
+import { isAllowedByRole } from 'core/utils/auth';
 
 type FormState = {
     review: string;
@@ -41,24 +42,28 @@ const MovieDetails = () => {
                     <p className="movie-details-synopsis">{movie?.synopsis}</p>
                 </div>
             </div>
-            <form className="movie-post-review card-base border-radius-10">
-                <textarea
-                    className="review-input input-base form-control"
-                    {...register("review")}
-                    placeholder="Deixe sua avaliação aqui"
-                    cols={30}
-                    rows={10}
-                />
-                <button className="btn btn-primary btn-submit-review">
-                    <h5 className="btn-submit-text">salvar</h5>
-                </button>
-            </form>
+            {
+                isAllowedByRole(['ROLE_MEMBER']) && (
+                    <form className="movie-post-review card-base border-radius-10">
+                        <textarea
+                            className="review-input input-base form-control"
+                            {...register("review")}
+                            placeholder="Deixe sua avaliação aqui"
+                            cols={30}
+                            rows={10}
+                        />
+                        <button className="btn btn-primary btn-submit-review">
+                            <h5 className="btn-submit-text">salvar</h5>
+                        </button>
+                    </form>
+                )
+            }
             <div className="movie-old-reviews card-base border-radius-10">
                 {
                     movie?.reviews.map(review => (
-                        <MovieReview review={review}/>
+                        <MovieReview review={review} />
                     ))
-                }   
+                }
             </div>
         </div>
     );
