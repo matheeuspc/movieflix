@@ -1,0 +1,24 @@
+.star-icon-review {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.user-review-info {
+    display: flex;
+}
+
+.review-content {
+    height: 50px;
+    padding: 14px 17px;
+    border: 1px solid #e1e1e1;
+    border-radius: 20px;
+}
+
+.review-text {
+    border: 0 !important;
+}
+
+.movie-review-container {
+    margin-bottom: 15px !important;
+}

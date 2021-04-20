@@ -7,12 +7,17 @@ export type MoviesResponse = {
 export type Movie = {
     id: number;
     title: string;
-    subtitle: string; 
+    subTitle: string; 
     year: number;
     imgUrl: string;
     synopsis: string;
     genreId: number;
     reviews: Review[];
+}
+
+export type Genre = {
+    id: number;
+    name: string;
 }
 
 export type Review = {

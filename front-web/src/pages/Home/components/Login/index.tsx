@@ -5,6 +5,7 @@ import './styles.scss';
 import { useState } from 'react';
 import ButtonIcon from 'core/components/ButtonIcon';
 import { makeLogin } from 'core/utils/request';
+import { saveSessionData } from 'core/utils/auth';
 
 type FormState = {
     username: string;
@@ -21,14 +22,14 @@ const Login = () => {
     const history = useHistory();
     const location = useLocation<LocationState>();
 
-    const { from } = location.state || { from: { pathname: "/catalog" } };
+    const { from } = location.state || { from: { pathname: "/movies" } };
 
     const onSubmit = (data: FormState) => {
         console.log(data);
         makeLogin(data)
             .then(response => {
                 setHasError(false);
-                // saveSessionData(response.data);
+                saveSessionData(response.data);
                 history.replace(from);
             })
             .catch(() => {

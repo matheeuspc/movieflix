@@ -1,4 +1,5 @@
 import Catalog from 'pages/Catalog';
+import MovieDetails from 'pages/Catalog/components/MovieDetails';
 import { Router, Switch, Route } from 'react-router-dom';
 import Navbar from './core/components/Navbar';
 import history from './core/utils/history';
@@ -11,8 +12,11 @@ const Routes = () => (
         <Route path="/" exact>
                 <Home />
             </Route>
-            <Route path="/catalog" exact>
+            <Route path="/movies" exact>
                 <Catalog />
+            </Route>
+            <Route path="/movies/:movieId">
+                <MovieDetails />
             </Route>
         </Switch>
     </Router>
