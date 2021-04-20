@@ -60,6 +60,11 @@ const MovieDetails = () => {
             }
             <div className="movie-old-reviews card-base border-radius-10">
                 {
+                    movie?.reviews.length == 0 && (
+                        <p>Ainda não existem reviews para esse filme.</p>
+                    )
+                }
+                {
                     movie?.reviews.map(review => (
                         <MovieReview review={review} />
                     ))

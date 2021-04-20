@@ -8,9 +8,48 @@
 }
 
 .catalog-movies {
-    // margin-top: 43px;
     display: grid;
     grid-template-columns: repeat(auto-fill, 270px);
     grid-gap: 33px 20px;
     justify-content: space-between;
+}
+
+.genre-select-container {
+    height: 50px;
+    width: 255px;
+    padding: 5px 20px;
+    flex: 1;
+
+    .movie-genres-select__control {
+        border: 1px solid #e1e1e1;
+        box-sizing: border-box;
+        border-radius: 10px;
+        background: #6c6c6c !important;
+    }
+
+    .movie-genres-select__indicator-separator {
+        display: none;
+        color: #9E9E9E;
+    }
+
+    .movie-genres-select__placeholder {
+        color: #fff;
+    }
+
+    .movie-genres-select__menu {
+        background: #6c6c6c !important;
+    }
+
+    .movie-genres-select__option {
+        color: #FFF;
+    }
+
+    .movie-genres-select__option--is-focused {
+        background-color: #e1e1e1;
+        color: black;
+    }
+
+    .movie-genres-select__single-value {
+        color: #FFF;
+    }
 }
