@@ -21,16 +21,12 @@ ul {
 }
 
 a {
-  color: inherit !important;
-
-  &:visited {
-    color: inherit !important;
-  }
 
   &:hover {
     text-decoration: none;
     color: unset;
   }
+  
 }
 
 .card-base {

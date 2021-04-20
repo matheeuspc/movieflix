@@ -54,7 +54,7 @@ const Catalog = () => {
 
     return (
         <div className="catalog-container">
-            <div className="categories-container card-base border-radius-10">
+            <div className="genres-container card-base border-radius-10">
             <Select
                 name="genres"
                 key={`select-${genre?.id}`}
@@ -63,10 +63,10 @@ const Catalog = () => {
                 options={genres}
                 getOptionLabel={(option: Genre) => option.name}
                 getOptionValue={(option: Genre) => String(option.id)}
-                placeholder="Categorias"
+                placeholder="Gêneros"
                 className="genre-select-container"
                 classNamePrefix="movie-genres-select"
-                inputId="categories"
+                inputId="genres"
                 onChange={value => handleChangeGenre(value as Genre)}
                 isClearable
             />

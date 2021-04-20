@@ -1,15 +1,16 @@
 import './styles.scss';
 import { useForm } from 'react-hook-form';
 import MovieReview from '../MovieReview';
-import { useParams } from 'react-router';
+import { toast } from 'react-toastify';
+import { useHistory, useParams } from 'react-router';
 import { useEffect, useState } from 'react';
 import { Movie, Review } from 'core/types/Movie';
 import { makePrivateRequest, makeRequest } from 'core/utils/request';
 import { isAllowedByRole } from 'core/utils/auth';
 
 type FormState = {
-    review: string;
-    userId: string;
+    text: string;
+    movieId: string;
 }
 
 type ParamsType = {
@@ -23,6 +24,7 @@ const MovieDetails = () => {
     const [isLoading, setIsLoading] = useState(false);
 
     const { register, handleSubmit, formState: { errors } } = useForm<FormState>();
+    const history = useHistory();
 
     useEffect(() => {
         setIsLoading(true);
@@ -30,6 +32,27 @@ const MovieDetails = () => {
             .then(response => setMovie(response.data))
             .finally(() => setIsLoading(false));
     }, [movieId]);
+
+    const onSubmit = (data: FormState) => {
+        const payload = {
+            ...data,
+            movieId
+        }
+
+        makePrivateRequest({ 
+            url: '/reviews', 
+            method: 'POST', 
+            data : payload
+        })
+        .then(() => {
+            toast.info('Review salva com sucesso!');
+            window.location.reload();
+            history.push(`/movies/${movieId}`);
+        })
+        .catch(() => {
+            toast.error('Erro ao salvar review!');
+        })
+    }
 
     return (
         <div className="movie-details-container">
@@ -44,10 +67,10 @@ const MovieDetails = () => {
             </div>
             {
                 isAllowedByRole(['ROLE_MEMBER']) && (
-                    <form className="movie-post-review card-base border-radius-10">
+                    <form className="movie-post-review card-base border-radius-10" onSubmit={handleSubmit(onSubmit)}>
                         <textarea
                             className="review-input input-base form-control"
-                            {...register("review")}
+                            {...register("text")}
                             placeholder="Deixe sua avaliação aqui"
                             cols={30}
                             rows={10}
