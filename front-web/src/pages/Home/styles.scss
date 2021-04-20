@@ -1,0 +1,31 @@
+.home-container {
+    margin: 40px 40px 140px 140px;
+    display: flex;
+    flex-direction: row;
+}
+
+.home-info {
+    margin-right: 160px;
+}
+
+.home-title {
+    font-weight: bold;
+    font-size: 55px;
+    line-height: 75px;
+    letter-spacing: -0.015em;
+    color: #ffffff;
+    margin-bottom: 100px;
+    margin-top: 30px;
+}
+
+.home-subtitle {
+    font-weight: normal;
+    font-size: 24px;
+    line-height: 33px;
+    letter-spacing: -0.015em;
+    color: #f2f2f2;
+}
+
+.home-image {
+    margin: 70px 130px 35px 60px;
+}
