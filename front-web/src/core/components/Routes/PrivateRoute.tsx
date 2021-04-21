@@ -5,11 +5,13 @@ type Props = {
     children: React.ReactNode;
     path: string;
     allowedRoutes?: Role[];
+    isExact?: boolean;
 }
 
-const PrivateRoute = ({ children, path, allowedRoutes}: Props) => {
+const PrivateRoute = ({ children, path, allowedRoutes, isExact }: Props) => {
     return (
         <Route
+            exact={isExact}
             path={path}
             render={({ location }) => {
                 if (!isAuthenticated()) {
@@ -24,7 +26,7 @@ const PrivateRoute = ({ children, path, allowedRoutes}: Props) => {
                 }
                 else if (isAuthenticated() && !isAllowedByRole(allowedRoutes)) {
                     return (
-                        <Redirect to={{ pathname: "/admin"}}/>
+                        <Redirect to={{ pathname: "/" }} />
                     )
                 }
 

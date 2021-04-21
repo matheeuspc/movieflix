@@ -7,6 +7,7 @@ import { useEffect, useState } from 'react';
 import { Movie, Review } from 'core/types/Movie';
 import { makePrivateRequest, makeRequest } from 'core/utils/request';
 import { isAllowedByRole } from 'core/utils/auth';
+import MovieDetailsLoader from '../Loaders/MovieDetailsLoader';
 
 type FormState = {
     text: string;
@@ -39,60 +40,66 @@ const MovieDetails = () => {
             movieId
         }
 
-        makePrivateRequest({ 
-            url: '/reviews', 
-            method: 'POST', 
-            data : payload
+        makePrivateRequest({
+            url: '/reviews',
+            method: 'POST',
+            data: payload
         })
-        .then(() => {
-            toast.info('Review salva com sucesso!');
-            window.location.reload();
-            history.push(`/movies/${movieId}`);
-        })
-        .catch(() => {
-            toast.error('Erro ao salvar review!');
-        })
+            .then(() => {
+                toast.info('Review salva com sucesso!');
+                window.location.reload();
+                history.push(`/movies/${movieId}`);
+            })
+            .catch(() => {
+                toast.error('Erro ao salvar review!');
+            })
     }
 
     return (
         <div className="movie-details-container">
-            <div className="movie-details card-base border-radius-10">
-                <img src={movie?.imgUrl} alt={movie?.title} className="movie-details-image" />
-                <div className="movie-details-info">
-                    <h4 className="movie-details-title">{movie?.title}</h4>
-                    <p className="movie-details-year">{movie?.year}</p>
-                    <p className="movie-details-subtitle">{movie?.subTitle}</p>
-                    <p className="movie-details-synopsis">{movie?.synopsis}</p>
-                </div>
-            </div>
             {
-                isAllowedByRole(['ROLE_MEMBER']) && (
-                    <form className="movie-post-review card-base border-radius-10" onSubmit={handleSubmit(onSubmit)}>
-                        <textarea
-                            className="review-input input-base form-control"
-                            {...register("text")}
-                            placeholder="Deixe sua avaliação aqui"
-                            cols={30}
-                            rows={10}
-                        />
-                        <button className="btn btn-primary btn-submit-review">
-                            <h5 className="btn-submit-text">salvar</h5>
-                        </button>
-                    </form>
+                isLoading ? <MovieDetailsLoader /> : (
+                    <>
+                        <div className="movie-details card-base border-radius-10">
+                            <img src={movie?.imgUrl} alt={movie?.title} className="movie-details-image" />
+                            <div className="movie-details-info">
+                                <h4 className="movie-details-title">{movie?.title}</h4>
+                                <p className="movie-details-year">{movie?.year}</p>
+                                <p className="movie-details-subtitle">{movie?.subTitle}</p>
+                                <p className="movie-details-synopsis">{movie?.synopsis}</p>
+                            </div>
+                        </div>
+                        {
+                            isAllowedByRole(['ROLE_MEMBER']) && (
+                                <form className="movie-post-review card-base border-radius-10" onSubmit={handleSubmit(onSubmit)}>
+                                    <textarea
+                                        className="review-input input-base form-control"
+                                        {...register("text")}
+                                        placeholder="Deixe sua avaliação aqui"
+                                        cols={30}
+                                        rows={10}
+                                    />
+                                    <button className="btn btn-primary btn-submit-review">
+                                        <h5 className="btn-submit-text">salvar</h5>
+                                    </button>
+                                </form>
+                            )
+                        }
+                        <div className="movie-old-reviews card-base border-radius-10">
+                            {
+                                movie?.reviews.length == 0 && (
+                                    <p>Ainda não existem reviews para esse filme.</p>
+                                )
+                            }
+                            {
+                                movie?.reviews.map(review => (
+                                    <MovieReview review={review} />
+                                ))
+                            }
+                        </div>
+                    </>
                 )
             }
-            <div className="movie-old-reviews card-base border-radius-10">
-                {
-                    movie?.reviews.length == 0 && (
-                        <p>Ainda não existem reviews para esse filme.</p>
-                    )
-                }
-                {
-                    movie?.reviews.map(review => (
-                        <MovieReview review={review} />
-                    ))
-                }
-            </div>
         </div>
     );
 };

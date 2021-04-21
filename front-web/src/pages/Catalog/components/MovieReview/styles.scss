@@ -9,7 +9,9 @@
 }
 
 .review-content {
-    height: 50px;
+    // height: 150px;
+    min-height: 50px;
+    max-height: 175px;
     padding: 14px 17px;
     border: 1px solid #e1e1e1;
     border-radius: 20px;

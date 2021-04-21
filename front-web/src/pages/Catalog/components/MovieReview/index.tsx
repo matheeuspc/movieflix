@@ -17,7 +17,7 @@ const MovieReview = ({review} : Props) => {
                 <StarIcon className="star-icon-review"/>
                 <p className="user-name">{review.user.name}</p>
             </div>
-            <div className="review-content">
+            <div className="review-content"> 
                 <p className="review-text">{review.text}</p>
             </div>
         </div>
