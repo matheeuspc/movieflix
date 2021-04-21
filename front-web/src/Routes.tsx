@@ -1,3 +1,4 @@
+import PrivateRoute from 'core/components/Routes/PrivateRoute';
 import Catalog from 'pages/Catalog';
 import MovieDetails from 'pages/Catalog/components/MovieDetails';
 import { Router, Switch, Route } from 'react-router-dom';
@@ -12,12 +13,12 @@ const Routes = () => (
         <Route path="/" exact>
                 <Home />
             </Route>
-            <Route path="/movies" exact>
+            <PrivateRoute path="/movies">
                 <Catalog />
-            </Route>
-            <Route path="/movies/:movieId">
+            </PrivateRoute>
+            <PrivateRoute path="/movies/:movieId">
                 <MovieDetails />
-            </Route>
+            </PrivateRoute>
         </Switch>
     </Router>
 );
