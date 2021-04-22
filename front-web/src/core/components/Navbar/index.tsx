@@ -21,7 +21,7 @@ const Navbar = () => {
         <nav className="bg-primary main-navbar">
             <Link to="/movies" className="nav-logo-text">MovieFlix</Link>
             {
-                isAuthenticated() && (
+                isAuthenticated() && currentUser && (
                     <a
                         href="#logout"
                         className="logout-btn"
