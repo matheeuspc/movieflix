@@ -12,7 +12,7 @@ const Routes = () => (
         <Route path="/" exact={true}>
                 <Home />
             </Route>
-            <Route path="/movies">
+            <Route path="/movies" exact>
                 <Catalog />
             </Route>
             <Route path="/movies/:movieId">
