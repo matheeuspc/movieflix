@@ -1,13 +1,21 @@
-import { isAuthenticated, logout } from 'core/utils/auth';
-import { Link } from 'react-router-dom';
+import { getAccessTokenDecoded, isAuthenticated, logout } from 'core/utils/auth';
+import { useEffect, useState } from 'react';
+import { Link, useLocation } from 'react-router-dom';
 import './styles.scss';
 
-const handleLogout = (event: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
-    event.preventDefault();
-    logout();
-}
-
 const Navbar = () => {
+    const [currentUser, setCurrentUser] = useState('');
+    const location = useLocation();
+
+    useEffect(() => {
+        const currentUserData = getAccessTokenDecoded();
+        setCurrentUser(currentUserData.user_name);
+    }, [location]);
+    
+    const handleLogout = (event: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
+        event.preventDefault();
+        logout();
+    }
 
     return (
         <nav className="bg-primary main-navbar">
