@@ -71,14 +71,21 @@ const MovieDetails = () => {
                         </div>
                         {
                             isAllowedByRole(['ROLE_MEMBER']) && (
-                                <form className="movie-post-review card-base border-radius-10" onSubmit={handleSubmit(onSubmit)}> 
+                                <form className="movie-post-review card-base border-radius-10" onSubmit={handleSubmit(onSubmit)}>
                                     <textarea
                                         className="review-input input-base form-control"
-                                        {...register("text")}
+                                        {...register("text", {
+                                            required: "Campo obrigatório"
+                                        })}
                                         placeholder="Deixe sua avaliação aqui"
                                         cols={30}
                                         rows={10}
                                     />
+                                    {errors.text && (
+                                        <div className="invalid-feedback d-block">
+                                            {errors.text.message}
+                                        </div>
+                                    )}
                                     <button className="btn btn-primary btn-submit-review">
                                         <h5 className="btn-submit-text">salvar</h5>
                                     </button>

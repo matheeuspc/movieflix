@@ -8,10 +8,9 @@ type Props = {
     isExact?: boolean;
 }
 
-const PrivateRoute = ({ children, path, allowedRoutes, isExact }: Props) => {
+const PrivateRoute = ({ children, path, allowedRoutes }: Props) => {
     return (
         <Route
-            exact={isExact}
             path={path}
             render={({ location }) => {
                 if (!isAuthenticated()) {

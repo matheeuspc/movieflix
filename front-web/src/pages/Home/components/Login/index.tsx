@@ -39,28 +39,49 @@ const Login = () => {
 
     return (
         <AuthCard title="login">
+            {hasError && (
+                <div className="alert alert-danger mt-5">
+                    Usuário ou senha inválidos!
+                </div>
+            )}
             <form
                 className="login-form"
                 onSubmit={handleSubmit(onSubmit)}
             >
-                <input
-                    {...register("username", {
-                        required: "Campo obrigatório",
-                        pattern: {
-                          value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
-                          message: "Email inválido"
-                        }
-                      }) }
-                    type="email"
-                    className="form-control input-base margin-bottom-30"
-                    placeholder="Email"
-                />
-                <input
-                    {...register("password")}
-                    type="password"
-                    className="form-control input-base margin-bottom-150"
-                    placeholder="Senha"
-                />
+                <div className="margin-bottom-30">
+                    <input
+                        {...register("username", {
+                            required: "Campo obrigatório",
+                            pattern: {
+                                value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+                                message: "Email inválido"
+                            }
+                        })}
+                        type="email"
+                        className={`form-control input-base ${errors.username ? 'is-invalid' : ''}`}
+                        placeholder="Email"
+                    />
+                    {errors.username && (
+                        <div className="invalid-feedback d-block">
+                            {errors.username.message}
+                        </div>
+                    )}
+                </div>
+                <div className="margin-bottom-150">
+                    <input
+                        {...register("password", {
+                            required: "Campo obrigatório"
+                        })}
+                        type="password"
+                        className={`form-control input-base ${errors.password ? 'is-invalid' : ''}`}
+                        placeholder="Senha"
+                    />
+                    {errors.password && (
+                        <div className="invalid-feedback d-block">
+                            {errors.password.message}
+                        </div>
+                    )}
+                </div>
                 <div className="login-submit">
                     <ButtonIcon text="logar" />
                 </div>
