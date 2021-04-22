@@ -6,20 +6,20 @@
 }
 
 .btn-icon-content {
-    background-color: #937D1C;
+    background-color: #937d1c;
     border-radius: 0px 10px 10px 0px;
     width: 70px;
     display: flex;
     align-items: center;
     justify-content: center;
-    color: #FFF;
+    color: #fff;
 }
 
 .default-button {
     display: flex;
 }
 
-@media (max-width: 576px) { 
+@media (max-width: 576px) {
     .default-button {
         max-width: 70vw;
         height: 50px;
@@ -27,7 +27,7 @@
     }
 
     .default-button button h5 {
-        font-size: 1em;        
+        font-size: 1em;
     }
 
     .btn-icon {
@@ -37,4 +37,13 @@
     .btn-icon-content {
         height: 50px;
     }
+}
+
+.login-text-button {
+    font-weight: bold;
+    font-size: 24px;
+    line-height: 33px;
+    text-align: center;
+    letter-spacing: -0.015em;
+    color: #000000;
 }

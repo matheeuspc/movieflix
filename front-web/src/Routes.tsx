@@ -10,10 +10,10 @@ const Routes = () => (
     <Router history={history}>
         <Navbar />
         <Switch>
-        <Route path="/" exact>
+        <Route path="/" exact={true}>
                 <Home />
             </Route>
-            <Route path="/movies" exact>
+            <Route path="/movies">
                 <Catalog />
             </Route>
             <Route path="/movies/:movieId">
