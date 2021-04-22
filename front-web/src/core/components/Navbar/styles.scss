@@ -3,9 +3,9 @@
     height: 70px;
     display: flex;
     flex-wrap: nowrap;
-    position: absolut;
+    position: absolut; 
     align-items: center;
-    padding: 20px 40px;
+    padding: 20px 135px 20px 40px;
     margin: 0;
 }
 
@@ -40,4 +40,6 @@
     letter-spacing: -0.015em;
     color: #000000;
     margin-left: 1050px;
+    display: block;
+    margin-left: auto;
 }
