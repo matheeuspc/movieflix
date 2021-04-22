@@ -71,7 +71,7 @@ const MovieDetails = () => {
                         </div>
                         {
                             isAllowedByRole(['ROLE_MEMBER']) && (
-                                <form className="movie-post-review card-base border-radius-10" onSubmit={handleSubmit(onSubmit)}>
+                                <form className="movie-post-review card-base border-radius-10" onSubmit={handleSubmit(onSubmit)}> 
                                     <textarea
                                         className="review-input input-base form-control"
                                         {...register("text")}
