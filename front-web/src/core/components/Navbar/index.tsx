@@ -1,5 +1,4 @@
 import { isAuthenticated, logout } from 'core/utils/auth';
-import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import './styles.scss';
 

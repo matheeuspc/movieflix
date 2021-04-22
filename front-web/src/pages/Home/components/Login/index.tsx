@@ -1,4 +1,4 @@
-import { Link, useHistory, useLocation } from 'react-router-dom';
+import { useHistory, useLocation } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import AuthCard from '../Card';
 import './styles.scss';

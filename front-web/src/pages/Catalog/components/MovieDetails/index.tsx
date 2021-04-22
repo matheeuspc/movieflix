@@ -4,8 +4,8 @@ import MovieReview from '../MovieReview';
 import { toast } from 'react-toastify';
 import { useHistory, useParams } from 'react-router';
 import { useEffect, useState } from 'react';
-import { Movie, Review } from 'core/types/Movie';
-import { makePrivateRequest, makeRequest } from 'core/utils/request';
+import { Movie } from 'core/types/Movie';
+import { makePrivateRequest } from 'core/utils/request';
 import { isAllowedByRole } from 'core/utils/auth';
 import MovieDetailsLoader from '../Loaders/MovieDetailsLoader';
 
@@ -94,7 +94,7 @@ const MovieDetails = () => {
                         }
                         <div className="movie-old-reviews card-base border-radius-10">
                             {
-                                movie?.reviews.length == 0 && (
+                                movie?.reviews.length === 0 && (
                                     <p>Ainda não existem reviews para esse filme.</p>
                                 )
                             }

@@ -3,20 +3,17 @@ import Select from 'react-select';
 import MovieCard from './components/MovieCard';
 import { Genre, MoviesResponse } from 'core/types/Movie';
 import './styles.scss';
-import { makePrivateRequest, makeRequest } from 'core/utils/request';
+import { makePrivateRequest } from 'core/utils/request';
 import MovieCardLoader from './components/Loaders/MovieCardLoader';
 import Pagination from 'core/components/Pagination';
 import { Link } from 'react-router-dom';
 
-type Props = {
-
-}
 
 const Catalog = () => { 
     const [moviesResponse, setMoviesResponse] = useState<MoviesResponse>();
     const [isLoading, setIsLoading] = useState(false);
     const [activePage, setActivePage]= useState(0);
-    const [name, setName] = useState('');
+    const [name] = useState('');
     const [genre, setGenre] = useState<Genre>();
     const [isLoadingGenres, setIsLoadingGenres] = useState(false);
     const [genres, setGenres] = useState<Genre[]>([]);

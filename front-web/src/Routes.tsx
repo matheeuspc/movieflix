@@ -1,4 +1,3 @@
-import PrivateRoute from 'core/components/Routes/PrivateRoute';
 import Catalog from 'pages/Catalog';
 import MovieDetails from 'pages/Catalog/components/MovieDetails';
 import { Router, Switch, Route } from 'react-router-dom';

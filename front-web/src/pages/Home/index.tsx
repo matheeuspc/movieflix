@@ -1,6 +1,5 @@
 import './styles.scss';
 import { ReactComponent as HomeImage } from '../../core/assets/images/background.svg';
-import { Route, Switch } from 'react-router';
 import Login from './components/Login';
 
 const Home = () => {

@@ -1,9 +1,6 @@
 import './styles.scss';
 import { ReactComponent as StarIcon } from '../../../../core/assets/images/star.svg';
 import { Review } from 'core/types/Movie';
-import { useEffect, useState } from 'react';
-import { useLocation } from 'react-router';
-import { getAccessTokenDecoded } from 'core/utils/auth';
 
 type Props = {
     review: Review;
