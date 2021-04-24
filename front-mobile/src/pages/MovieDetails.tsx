@@ -1,14 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text, ActivityIndicator, TouchableOpacity, Image, ScrollView } from 'react-native';
-import AsyncStorage from '@react-native-async-storage/async-storage';
-import { api, getMovie, createReview } from '../services';
-import { useNavigation } from '@react-navigation/native';
-import leftArrow from '../assets/leftArrow.png';
+import { View, Text, TouchableOpacity, Image, ScrollView } from 'react-native';
+import { getMovie, createReview } from '../services';
 import { text, theme } from '../styles';
 import { TextInput } from 'react-native-gesture-handler';
 import Toast from 'react-native-tiny-toast';
 import { ReviewCard } from '../components';
-import { isAllowedByRole, isAuthenticatedAndAllowedByRole } from '../services/auth';
 
 interface FormReviewProps {
     setScreen: Function;
@@ -19,10 +15,6 @@ const MovieDetails: React.FC = ({
         params: { id }
     }
 }) => {
-    // const { setScreen } = props;
-
-    const [testee, setteste] = useState(true);
-
     const [movie, setMovie] = useState({
         id: null,
         title: null,
@@ -55,8 +47,6 @@ const MovieDetails: React.FC = ({
         }
         setLoading(false);
     }
-
-    const navigation = useNavigation();
 
     const [loading, setLoading] = useState(false);
 

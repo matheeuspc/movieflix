@@ -1,19 +1,14 @@
-import React, { useState, useEffect, useCallback } from 'react';
-import { View, Image, Text, TextInput, TouchableOpacity, ActivityIndicator, Modal } from 'react-native';
-import { colors, theme, text, nav } from '../styles';
+import React, { useState, useEffect } from 'react';
+import { View, Image, Text, TouchableOpacity, ActivityIndicator, Modal } from 'react-native';
+import { theme, text } from '../styles';
 
 import downArrow from '../assets/downArrow.png';
-import { useNavigation } from '@react-navigation/native';
-
-import { login } from '../services/auth';
 import { ScrollView } from 'react-native-gesture-handler';
 
-import { api, getGenres, getMovies } from '../services';
+import { getGenres, getMovies } from '../services';
 import { MovieCard } from '../components';
 
 const Catalog: React.FC = () => {
-    const [search, setSearch] = useState("");
-    // const [selectedGenre, setSelectedGenre] = useState('');
     const [selectedGenre, setSelectedGenre] = useState({
         id: '',
         name: ''

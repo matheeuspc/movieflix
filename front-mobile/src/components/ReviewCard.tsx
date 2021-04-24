@@ -1,7 +1,5 @@
 import React from 'react';
-import { useNavigation } from '@react-navigation/core';
 import { View, Image, Text} from 'react-native';
-import { TouchableOpacity } from 'react-native-gesture-handler';
 import { text, theme } from '../styles';
 import star from '../assets/star.png';
 

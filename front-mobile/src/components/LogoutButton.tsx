@@ -1,9 +1,9 @@
 import { useNavigation, useRoute } from '@react-navigation/core';
 import React, { useEffect, useState } from 'react';
-import { Text, Image, View } from 'react-native';
-import { TouchableOpacity, TouchableNativeFeedback } from 'react-native-gesture-handler';
+import { Text, View } from 'react-native';
+import { TouchableOpacity } from 'react-native-gesture-handler';
 import { doLogout, isAuthenticated } from '../services/auth';
-import { nav, text, theme } from '../styles';
+import { nav } from '../styles';
 
 const LogoutButton: React.FC = () => {
     const route = useRoute();

@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react';
-import { View, Image, Text, TextInput, TouchableOpacity} from 'react-native';
-import { colors, theme, text, nav } from '../styles';
+import React from 'react';
+import { View, Image, Text, TouchableOpacity} from 'react-native';
+import { theme, text } from '../styles';
 
 import mainImage from '../assets/mainImage.png';
 import arrow from '../assets/arrow.png';

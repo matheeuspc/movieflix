@@ -1,4 +1,3 @@
-import jwt_decode from 'jwt-decode';
 import { api, TOKEN } from './index';
 import queryString from 'query-string';
 import AsyncStorage from '@react-native-async-storage/async-storage';
@@ -7,14 +6,6 @@ interface AuthProps {
     username: string;
     password: string;
 };
-
-export type Role = 'ROLE_VISITOR' | 'ROLE_MEMBER';
-
-type AccessToken = {
-    exp: number;
-    user_name: string;
-    authorities: Role[];
-}
 
 export async function login(userInfo: AuthProps) {
     const data = queryString.stringify({ ...userInfo, grant_type: "password" });
