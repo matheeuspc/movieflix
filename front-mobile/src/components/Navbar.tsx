@@ -1,7 +1,7 @@
 import { useNavigation, useRoute } from '@react-navigation/core';
 import React, { useEffect, useState } from 'react';
 import { Text, Image, View } from 'react-native';
-import { TouchableOpacity } from 'react-native-gesture-handler';
+import { TouchableOpacity, TouchableNativeFeedback } from 'react-native-gesture-handler';
 import { doLogout, isAuthenticated } from '../services/auth';
 import { nav, text, theme } from '../styles';
 
@@ -38,40 +38,36 @@ const Navbar: React.FC = () => {
 
     return (
         <>
-            <View style={{flexDirection: 'row', alignItems: 'center', padding: 15}}>
-            {
-                (route.name=='Login' || route.name=='MovieDetails')  && (
-                    <TouchableOpacity
-                        onPress={() => navigation.goBack()}
-                        style={{marginRight: 0}}
+            <View style={{flexDirection: 'row',  alignItems: 'center', justifyContent: 'space-around', padding: 15 }}>
+                <View>
+                    {
+                        (route.name == 'Login' || route.name == 'MovieDetails') && (
+                            <TouchableOpacity
+                                onPress={() => navigation.goBack()}
+                                style={{ marginRight: 10 }}
+                            >
+                                <Image source={goback} />
+                            </TouchableOpacity>
+                        )
+                    }
+                </View>
+                <View>
+                    <Text
+                        style={{
+                            marginLeft: 20,
+                            marginRight: 100,
+                            fontWeight: 'bold',
+                            fontSize: 18,
+                            lineHeight: 25,
+                            color: '#000',
+                        }}
                     >
-                        <Image source={goback} />
-                    </TouchableOpacity>
-                )
-            }
-            <Text 
-                style={{
-                    marginLeft: 20,
-                    marginRight: 185,
-                    fontWeight: 'bold',
-                    fontSize: 18,
-                    lineHeight: 25,
-                    color: '#000'
-                }}
-            >
-                MovieFlix
-            </Text>
-            {
-                authenticated && route.name!='Login' && route.name!='Home' ? (
-                    <TouchableOpacity
-                        style={nav.logoutBtn}
-                        onPress={() => logout()}
-                    >
-                        <Text style={nav.logoutBtnText}>sair</Text>
-                    </TouchableOpacity>
-                ) : null
-            }
+                        MovieFlix
+                     </Text>
+                </View>
+                
             </View>
+
 
         </>
     )

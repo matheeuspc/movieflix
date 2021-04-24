@@ -425,14 +425,14 @@ const nav = StyleSheet.create({
         borderRadius: 10,
         alignItems: "center",
         justifyContent: "center",
-        marginRight: 20
+        marginRight: 20,
     },
     logoutBtnText: {
         textTransform: 'uppercase',
         fontWeight: 'bold',
         fontSize: 14,
         lineHeight: 19,
-        color: colors.black,
+        color: colors.black
     }
 });
 
