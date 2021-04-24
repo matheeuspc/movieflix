@@ -432,7 +432,7 @@ const nav = StyleSheet.create({
         fontWeight: 'bold',
         fontSize: 14,
         lineHeight: 19,
-        color: colors.black
+        color: colors.black,
     }
 });
 

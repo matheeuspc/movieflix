@@ -43,7 +43,7 @@ const Navbar: React.FC = () => {
                 (route.name=='Login' || route.name=='MovieDetails')  && (
                     <TouchableOpacity
                         onPress={() => navigation.goBack()}
-                        style={{marginRight: 15}}
+                        style={{marginRight: 0}}
                     >
                         <Image source={goback} />
                     </TouchableOpacity>
@@ -51,6 +51,7 @@ const Navbar: React.FC = () => {
             }
             <Text 
                 style={{
+                    marginLeft: 20,
                     marginRight: 185,
                     fontWeight: 'bold',
                     fontSize: 18,
