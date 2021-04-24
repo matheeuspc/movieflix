@@ -49,6 +49,7 @@ const MovieDetails: React.FC = ({
         try {
             await createReview(data);
             Toast.showSuccess("Review postada com sucesso!");
+            newReview.text = '';
         } catch (res) {
             Toast.show("Erro ao salvar review...");
         }
@@ -72,7 +73,7 @@ const MovieDetails: React.FC = ({
 
     useEffect(() => {
         loadMovieData();
-    }, []);
+    }, [movie]);
 
     return (
         <ScrollView style={theme.detailsContainer}>
