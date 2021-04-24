@@ -50,8 +50,7 @@ const MovieDetails: React.FC = ({
             await createReview(data);
             Toast.showSuccess("Review postada com sucesso!");
         } catch (res) {
-            Toast.show("Erro ao salvar...");
-            console.log(res);
+            Toast.show("Erro ao salvar review...");
         }
         setLoading(false);
     }
