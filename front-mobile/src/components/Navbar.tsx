@@ -40,7 +40,7 @@ const Navbar: React.FC = () => {
         <>
             <View style={{flexDirection: 'row', alignItems: 'center', padding: 15}}>
             {
-                navigation.canGoBack() && (
+                (route.name=='Login' || route.name=='MovieDetails')  && (
                     <TouchableOpacity
                         onPress={() => navigation.goBack()}
                         style={{marginRight: 15}}
@@ -61,7 +61,7 @@ const Navbar: React.FC = () => {
                 MovieFlix
             </Text>
             {
-                authenticated && navigation.canGoBack() ? (
+                authenticated && route.name!='Login' && route.name!='Home' ? (
                     <TouchableOpacity
                         style={nav.logoutBtn}
                         onPress={() => logout()}
