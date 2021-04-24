@@ -67,10 +67,6 @@ const MovieDetails: React.FC = ({
         setLoading(false);
     }
 
-    function teste() {
-        console.log(AsyncStorage.getAllKeys().then((res) => console.log(`resposta ${res}`)))
-    }
-
     useEffect(() => {
         loadMovieData();
     }, [movie]);

@@ -416,6 +416,23 @@ const nav = StyleSheet.create({
         color: colors.black,
         fontWeight: "bold",
         marginLeft: 20,
+    },
+    logoutBtn: {
+        width: 75,
+        height: 25,
+        borderWidth: 1,
+        borderColor: colors.black,
+        borderRadius: 10,
+        alignItems: "center",
+        justifyContent: "center",
+        marginRight: 20
+    },
+    logoutBtnText: {
+        textTransform: 'uppercase',
+        fontWeight: 'bold',
+        fontSize: 14,
+        lineHeight: 19,
+        color: colors.black
     }
 });
 

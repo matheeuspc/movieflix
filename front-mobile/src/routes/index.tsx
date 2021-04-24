@@ -17,8 +17,8 @@ const Routes: React.FC = () => {
                 headerStyle: {
                     backgroundColor: colors.primary,
                 },
-                headerLeft: () => <HeaderText />,
-                headerRight: () => <Navbar />
+                headerLeft: () => <Navbar />,
+                // headerRight: () => <Navbar />
             }}
         >
             <Stack.Screen name="Home" component={Home} /> 
