@@ -214,7 +214,7 @@ const theme = StyleSheet.create({
     //Catalog elements
     catalogContainer: {
         backgroundColor: colors.secondary,
-        padding: 20
+        padding: 20,
     },
     //MovieCard
     movieCard: {

@@ -63,6 +63,18 @@ const Catalog: React.FC = () => {
             >
                 <View style={theme.modalContainer}>
                     <ScrollView contentContainerStyle={theme.modalContent}>
+                    <TouchableOpacity
+                                        style={theme.modalItem}
+                                        onPress={() => {
+                                            setSelectedGenre({
+                                                id: '',
+                                                name: ''
+                                            })
+                                            setShowGenres(!showGenres);
+                                        }}
+                                    >
+                                        <Text>Todos</Text>
+                                    </TouchableOpacity>
                         {
                             genres.map(
                                 genre => (
